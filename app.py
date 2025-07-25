@@ -504,12 +504,11 @@ def call_groq_api(message, language='english'):
 
 @app.route('/api/validate-legal-query', methods=['POST'])
 def validate_legal_query():
-    """Validate if a query is legal-related"""
     try:
         data = request.get_json()
         query = data.get('query', '')
         
-        is_legal, category, confidence = validator.is_legal_query(query)
+        is_legal, category, confidence = is_legal_query(query)
         
         return jsonify({
             "is_legal": is_legal,
@@ -521,6 +520,7 @@ def validate_legal_query():
     except Exception as e:
         logger.error(f"Error validating query: {str(e)}")
         return jsonify({"error": "Internal server error"}), 500
+
 
 @app.route('/api/quick-question', methods=['POST'])
 def quick_question():
