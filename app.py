@@ -504,11 +504,17 @@ def call_groq_api(message, language='english'):
 
 @app.route('/api/validate-legal-query', methods=['POST'])
 def validate_legal_query():
+    from flask import request, jsonify
+    from datetime import datetime
+    import logging
+    import validator  # your custom module
+
+    logger = logging.getLogger(__name__)
+    
     try:
         data = request.get_json()
         query = data.get('query', '')
-        
-        is_legal, category, confidence = is_legal_query(query)
+        is_legal, category, confidence = validator.is_legal_query(query)
         
         return jsonify({
             "is_legal": is_legal,
@@ -516,9 +522,9 @@ def validate_legal_query():
             "confidence": confidence,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
-        logger.error(f"Error validating query: {str(e)}")
+        logger.error(f"Error: {str(e)}")
         return jsonify({"error": "Internal server error"}), 500
 
 
