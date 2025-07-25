@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Chat - LegalMitra AI{% endblock %}
+
+{% block content %}
+<div class="chat-page">
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <h3>
+                    <i data-lucide="message-square"></i>
+                    Quick Questions
+                </h3>
+            </div>
+            <div class="quick-questions">
+                <button class="quick-question" data-question="What are my rights as a consumer?" data-question-hi="उपभोक्ता के रूप में मेरे क्या अधिकार हैं?">
+                    <span class="question-icon">🛡️</span>
+                    <span class="question-text">Consumer Rights</span>
+                </button>
+                <button class="quick-question" data-question="How to file an FIR?" data-question-hi="FIR कैसे दर्ज करें?">
+                    <span class="question-icon">📋</span>
+                    <span class="question-text">File FIR</span>
+                </button>
+                <button class="quick-question" data-question="Property registration process" data-question-hi="संपत्ति पंजीकरण प्रक्रिया">
+                    <span class="question-icon">🏠</span>
+                    <span class="question-text">Property Registration</span>
+                </button>
+                <button class="quick-question" data-question="Divorce procedure in India" data-question-hi="भारत में तलाक की प्रक्रिया">
+                    <span class="question-icon">💔</span>
+                    <span class="question-text">Divorce Procedure</span>
+                </button>
+                <button class="quick-question" data-question="Labour law violations" data-question-hi="श्रम कानून उल्लंघन">
+                    <span class="question-icon">⚖️</span>
+                    <span class="question-text">Labour Law</span>
+                </button>
+                <button class="quick-question" data-question="Constitutional rights" data-question-hi="संवैधानिक अधिकार">
+                    <span class="question-icon">📜</span>
+                    <span class="question-text">Constitutional Rights</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div class="chat-interface">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i data-lucide="bot"></i>
+                    <span>Legal Assistant Chat</span>
+                    <div class="chat-status">
+                        <div class="status-indicator"></div>
+                        <span>Groq AI</span>
+                        <i data-lucide="zap"></i>
+                    </div>
+                </div>
+                <div class="language-toggle">
+                    <button id="lang-english" class="lang-btn active">English</button>
+                    <button id="lang-hindi" class="lang-btn">हिंदी</button>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>नमस्ते! I'm LegalMitra, your AI legal assistant. I can help you with Indian laws including IPC, CrPC, CPC, Property Law, Consumer Protection, and more. How can I assist you today?</p>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Ask your legal question..." autocomplete="off">
+                    <button id="send-button" class="send-button">
+                        <i data-lucide="send"></i>
+                    </button>
+                </div>
+                <div class="chat-disclaimer">
+                    <p>LegalMitra provides general legal information. Consult a lawyer for specific advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

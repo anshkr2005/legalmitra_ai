@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Cases - LegalMitra AI{% endblock %}
+
+{% block content %}
+<div class="cases-page">
+    <div class="page-header">
+        <div class="header-content">
+            <h1>Case Management</h1>
+            <p>Track Your Legal Cases</p>
+            <a href="/chat" class="btn btn-primary">Ask AI Assistant</a>
+        </div>
+    </div>
+
+    <div class="cases-container">
+        <div class="search-filter">
+            <div class="search-box">
+                <i data-lucide="search"></i>
+                <input type="text" id="search-input" placeholder="Search cases by title or case number...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Cases</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+        </div>
+
+        <div class="cases-grid" id="cases-grid">
+            <!-- Cases will be populated by JavaScript -->
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <p>Active Cases</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <p>Completed Cases</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <p>Pending Cases</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">51%</div>
+                <p>Average Progress</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/cases.js') }}"></script>
+{% endblock %}
