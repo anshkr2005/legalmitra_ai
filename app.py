@@ -514,7 +514,7 @@ def validate_legal_query():
     try:
         data = request.get_json()
         query = data.get('query', '')
-        is_legal, category, confidence = validator.is_legal_query(query)
+        is_legal, category, confidence = is_legal_query(query)
         
         return jsonify({
             "is_legal": is_legal,
@@ -1054,7 +1054,7 @@ def validate_legal_query():
         data = request.get_json()
         query = data.get('query', '')
         
-        is_legal, category, confidence = validator.is_legal_query(query)
+        is_legal, category, confidence = is_legal_query(query)
         
         return jsonify({
             "is_legal": is_legal,
